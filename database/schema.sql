@@ -8,7 +8,7 @@
 -- ------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
 
     name VARCHAR(100) NOT NULL,
 
