@@ -1,0 +1,7 @@
+import { Activity, Bell, ShieldAlert, Users } from 'lucide-react'
+
+function AdminCard({ icon: Icon, label, value, note }) { return <div className="panel metric"><Icon size={19} color="#55e1d0" /><div className="metric-label">{label}</div><div className="metric-value">{value}</div><div className="muted" style={{ fontSize: 12, marginTop: 6 }}>{note}</div></div> }
+
+export default function AdminDashboard() {
+  return <><div className="dashboard-heading"><div><span className="eyebrow">Operations center</span><h1>System overview</h1><p>Monitor the warning network and its connected services.</p></div><span className="badge badge-info"><Activity size={13} /> Backend connected</span></div><div className="grid metric-grid"><AdminCard icon={Users} label="Total users" value="—" note="Awaiting live API data" /><AdminCard icon={ShieldAlert} label="Active alerts" value="—" note="Awaiting live API data" /><AdminCard icon={Bell} label="Notifications" value="—" note="Awaiting live API data" /><AdminCard icon={Activity} label="System status" value="—" note="Awaiting live API data" /></div><section className="panel panel-pad"><div className="section-head"><h2>Admin modules</h2><span className="muted">Role-restricted workspace</span></div><p className="muted" style={{ lineHeight: 1.7 }}>User, alert, notification, and system monitoring modules will display backend-provided records here. No operational statistics are fabricated in the client.</p></section></>
+}
