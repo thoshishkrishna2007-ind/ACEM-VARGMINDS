@@ -1,21 +1,28 @@
 import os
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
-# .env nunchi secret key testunnam
-SECRET_KEY = os.getenv("SECRET_KEY", "super_secret_key_for_jwt_auth")
+import jwt
+import bcrypt
+from dotenv import load_dotenv
+
+load_dotenv()
+SECRET_KEY = os.getenv("SECRET_KEY")
+if not SECRET_KEY:
+    raise RuntimeError("SECRET_KEY must be set in the backend environment")
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "60"))
 
 def get_password_hash(password: str) -> str:
-    # Dummy hash for now. Real world lo 'passlib' library vadatham.
-    return f"hashed_{password}"
+    return bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    # User icchina password, DB lo unna password match ayyayo ledo checking
-    return f"hashed_{plain_password}" == hashed_password
+    return bcrypt.checkpw(plain_password.encode("utf-8"), hashed_password.encode("utf-8"))
 
 def create_access_token(data: dict) -> str:
-    # Dummy token generation. Real app lo 'PyJWT' library vadtham
-    expire_time = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    user_identifier = data.get("sub", "unknown")
-    return f"fake-jwt-token-for-{user_identifier}-expires-at-{expire_time.timestamp()}"
+    payload = data.copy()
+    payload["exp"] = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
+
+
+def decode_access_token(token: str) -> dict:
+    return jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])

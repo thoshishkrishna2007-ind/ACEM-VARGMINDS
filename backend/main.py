@@ -1,5 +1,11 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+import os
 import uvicorn
+from pathlib import Path
+
+load_dotenv(Path(__file__).resolve().parent / ".env")
 
 # Importing all routers
 from api import auth, users, weather, alerts, notifications, admin
@@ -18,6 +24,7 @@ app = FastAPI(
     description="Backend API for Smart India Hackathon Project",
     version="1.0.0"
 )
+app.add_middleware(CORSMiddleware, allow_origins=[os.getenv("FRONTEND_ORIGIN", "http://localhost:5173")], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 
 # Connect API routes
 app.include_router(auth.router)
