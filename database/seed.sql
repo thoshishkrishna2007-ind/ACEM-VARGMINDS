@@ -8,7 +8,7 @@
 -- SAMPLE USERS
 -- ------------------------------------------------------------
 
-INSERT IGNORE INTO users
+INSERT INTO users
 (
     name,
     email,
@@ -32,7 +32,7 @@ VALUES
 );
 
 
-INSERT IGNORE INTO users
+INSERT INTO users
 (
     name,
     email,
@@ -56,7 +56,7 @@ VALUES
 );
 
 
-INSERT IGNORE INTO users
+INSERT INTo users
 (
     name,
     email,
@@ -84,7 +84,7 @@ VALUES
 -- USER PREFERENCES
 -- ------------------------------------------------------------
 
-INSERT IGNORE INTO user_preferences
+INSERT INTO user_preferences
 (
     user_id,
     temperature_alert,
@@ -97,16 +97,16 @@ INSERT IGNORE INTO user_preferences
 VALUES
 (
     1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1
+    TRUE,
+    TRUE,
+    TRUE,
+    TRUE,
+    TRUE,
+    TRUE
 );
 
 
-INSERT IGNORE INTO user_preferences
+INSERT INTO user_preferences
 (
     user_id,
     temperature_alert,
@@ -118,17 +118,17 @@ INSERT IGNORE INTO user_preferences
 )
 VALUES
 (
-    2,
     1,
-    1,
-    1,
-    1,
-    1,
-    1
+    TRUE,
+    TRUE,
+    TRUE,
+    TRUE,
+    TRUE,
+    TRUE
 );
 
 
-INSERT IGNORE INTO user_preferences
+INSERT INTO user_preferences
 (
     user_id,
     temperature_alert,
@@ -140,13 +140,13 @@ INSERT IGNORE INTO user_preferences
 )
 VALUES
 (
-    3,
     1,
-    1,
-    1,
-    1,
-    1,
-    1
+    TRUE,
+    TRUE,
+    TRUE,
+    TRUE,
+    TRUE,
+    TRUE
 );
 
 
@@ -176,7 +176,7 @@ VALUES
     35.2,
     78,
     2.5,
-    3.0,
+    3,
     18.4,
     61
 );
@@ -202,12 +202,12 @@ VALUES
 (
     16.3067,
     80.4365,
-    CURDATE(),
-    35.0,
+    CURRENT_DATE,
+    35,
     26.0,
     60,
     5.2,
-    20.0,
+    20,
     61
 );
 
@@ -255,8 +255,8 @@ VALUES
 (
     2,
     1,
-    0,
-    0
+    FALSE,
+    FALSE
 );
 
 
@@ -271,8 +271,8 @@ VALUES
 (
     3,
     1,
-    0,
-    0
+    FALSE,
+    FALSE
 );
 
 
