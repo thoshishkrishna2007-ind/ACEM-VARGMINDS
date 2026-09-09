@@ -8,7 +8,7 @@
 -- SAMPLE USERS
 -- ------------------------------------------------------------
 
-INSERT OR IGNORE INTO users
+INSERT IGNORE INTO users
 (
     name,
     email,
@@ -32,7 +32,7 @@ VALUES
 );
 
 
-INSERT OR IGNORE INTO users
+INSERT IGNORE INTO users
 (
     name,
     email,
@@ -56,7 +56,7 @@ VALUES
 );
 
 
-INSERT OR IGNORE INTO users
+INSERT IGNORE INTO users
 (
     name,
     email,
@@ -84,7 +84,7 @@ VALUES
 -- USER PREFERENCES
 -- ------------------------------------------------------------
 
-INSERT OR IGNORE INTO user_preferences
+INSERT IGNORE INTO user_preferences
 (
     user_id,
     temperature_alert,
@@ -106,7 +106,7 @@ VALUES
 );
 
 
-INSERT OR IGNORE INTO user_preferences
+INSERT IGNORE INTO user_preferences
 (
     user_id,
     temperature_alert,
@@ -128,7 +128,7 @@ VALUES
 );
 
 
-INSERT OR IGNORE INTO user_preferences
+INSERT IGNORE INTO user_preferences
 (
     user_id,
     temperature_alert,
@@ -202,7 +202,7 @@ VALUES
 (
     16.3067,
     80.4365,
-    DATE('now'),
+    CURDATE(),
     35.0,
     26.0,
     60,

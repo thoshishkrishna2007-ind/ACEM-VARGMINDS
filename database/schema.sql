@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS users (
 -- ------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS user_preferences (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
 
     user_id INTEGER NOT NULL,
 
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS user_preferences (
 -- ------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS weather_data (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
 
     latitude DECIMAL(10, 7) NOT NULL,
 
@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS weather_data (
 -- ------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS weather_forecast (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
 
     latitude DECIMAL(10, 7) NOT NULL,
 
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS weather_forecast (
 -- ------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS alerts (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
 
     alert_type VARCHAR(50) NOT NULL,
 
@@ -163,7 +163,7 @@ CREATE TABLE IF NOT EXISTS alerts (
 -- ------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS user_alerts (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
 
     user_id INTEGER NOT NULL,
 
@@ -190,7 +190,7 @@ CREATE TABLE IF NOT EXISTS user_alerts (
 -- ------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS notifications (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
 
     user_id INTEGER NOT NULL,
 
@@ -221,7 +221,7 @@ CREATE TABLE IF NOT EXISTS notifications (
 -- ------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS ai_analysis (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
 
     alert_id INTEGER,
 
@@ -246,7 +246,7 @@ CREATE TABLE IF NOT EXISTS ai_analysis (
 -- ------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS system_logs (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
 
     level VARCHAR(20) DEFAULT 'INFO',
 
@@ -262,29 +262,29 @@ CREATE TABLE IF NOT EXISTS system_logs (
 -- INDEXES
 -- ============================================================
 
-CREATE INDEX IF NOT EXISTS idx_users_email
+CREATE INDEX idx_users_email
 ON users(email);
 
-CREATE INDEX IF NOT EXISTS idx_weather_location
+CREATE INDEX idx_weather_location
 ON weather_data(latitude, longitude);
 
-CREATE INDEX IF NOT EXISTS idx_weather_recorded
+CREATE INDEX idx_weather_recorded
 ON weather_data(recorded_at);
 
-CREATE INDEX IF NOT EXISTS idx_alert_type
+CREATE INDEX idx_alert_type
 ON alerts(alert_type);
 
-CREATE INDEX IF NOT EXISTS idx_alert_severity
+CREATE INDEX idx_alert_severity
 ON alerts(severity);
 
-CREATE INDEX IF NOT EXISTS idx_alert_created
+CREATE INDEX idx_alert_created
 ON alerts(created_at);
 
-CREATE INDEX IF NOT EXISTS idx_notifications_user
+CREATE INDEX idx_notifications_user
 ON notifications(user_id);
 
-CREATE INDEX IF NOT EXISTS idx_notifications_read
+CREATE INDEX idx_notifications_read
 ON notifications(is_read);
 
-CREATE INDEX IF NOT EXISTS idx_ai_alert
+CREATE INDEX idx_ai_alert
 ON ai_analysis(alert_id);
