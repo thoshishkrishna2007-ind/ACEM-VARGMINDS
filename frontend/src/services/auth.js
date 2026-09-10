@@ -1,4 +1,7 @@
 import api from './api'
+
 export const login = (payload) => api.post('/auth/login', payload)
-export const register = (payload) => api.post('/auth/signup', payload)
+
+export const register = (payload) => api.post('/auth/register', payload)
+
 export const profile = () => api.get('/users/me')
