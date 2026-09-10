@@ -1,7 +1,7 @@
 import os
 import sqlite3
 from typing import Optional
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
@@ -15,9 +15,9 @@ gemini_client = None
 
 if GEMINI_KEY:
     try:
-        import google.generativeai as genai
-        genai.configure(api_key=GEMINI_KEY)
-        gemini_client = genai.GenerativeModel("gemini-1.5-flash")
+        from google import generativeai as genai  # type: ignore
+        genai.configure(api_key=GEMINI_KEY)  # type: ignore
+        gemini_client = genai.GenerativeModel("gemini-1.5-flash")  # type: ignore
     except Exception as e:
         print(f"Gemini Init Warning: {e}")
 
