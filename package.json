@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "dev:backend": "..\\.venv\\Scripts\\uvicorn main:app --reload --port 8000",
+    "dev:frontend": "vite",
+    "dev": "concurrently -n \"BACKEND,FRONTEND\" -c \"bgBlue.bold,bgGreen.bold\" \"cd backend && ..\\.venv\\Scripts\\uvicorn main:app --reload --port 8000\" \"npm run dev:frontend\""
+  }
+}
